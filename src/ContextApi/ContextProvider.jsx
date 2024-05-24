@@ -19,7 +19,7 @@ import auth from "../Firebase/firebase.config";
   export const AuthContext = createContext(null);
   
   export default function ContextProvider({ children }) {
-    const githubProvider = new GithubAuthProvider();
+  
     const googleProvider = new GoogleAuthProvider();
   
     const [user, setUser] = useState(null);
@@ -31,12 +31,7 @@ import auth from "../Firebase/firebase.config";
     const [signUpModal, setSignUpModal] = useState(false);
     
     
-    const createUser = (email, password) => {
-      return createUserWithEmailAndPassword(auth,email, password);
-    };
-    const signInUser = (email, password) => {
-      return signInWithEmailAndPassword(auth, email, password);
-    };
+ 
     const updateUserProfile = (user, update) => {
       return updateProfile(user, update);
       
@@ -45,9 +40,7 @@ import auth from "../Firebase/firebase.config";
     return  signInWithPopup(auth,googleProvider)
     }
   
-    const githubLogin = ()=>{
-      return signInWithPopup(auth,githubProvider)
-    }
+   
     const logOut =()=>{
       return signOut(auth)
     }
@@ -83,11 +76,8 @@ import auth from "../Firebase/firebase.config";
   
     const authInfo = {
       user,
-      createUser,
-      signInUser,
       updateUserProfile,
       googleLogin,
-      githubLogin,
       logOut,
       loading,
       setUser,
