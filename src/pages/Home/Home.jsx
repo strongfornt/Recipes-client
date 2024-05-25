@@ -4,6 +4,7 @@ import SuccessStories from "./HomeElements/SuccessStories/SuccessStories";
 import { Fade } from "react-awesome-reveal";
 import useAuth from "../../hooks/useAuth";
 import DeveloperInfo from "./HomeElements/Developer/DeveloperInfo";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 
@@ -11,6 +12,7 @@ import DeveloperInfo from "./HomeElements/Developer/DeveloperInfo";
 
 export default function Home() {
     const {theme} = useAuth()
+   
   return (
     
     <>

@@ -33,6 +33,7 @@ import auth from "../Firebase/firebase.config";
     const [signUpModal, setSignUpModal] = useState(false);
     
     
+    
  
     const updateUserProfile = (user, update) => {
       return updateProfile(user, update);

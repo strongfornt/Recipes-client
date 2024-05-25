@@ -85,25 +85,25 @@ export default function Nav() {
 
       <NavLink
         onClick={() => setMenu(false)}
-        to="/assignments"
+        to="/recipes"
         className={({ isActive }) =>
           isActive
             ? ` text-teal-400 w-fit text-sm font-medium  `
             : `text-sm w-fit  font-medium hover:text-teal-400 duration-300 `
         }
       >
-        <p className="">Assignments</p>
+        <p className="">Recipes</p>
       </NavLink>
       <NavLink
         onClick={() => setMenu(false)}
-        to="/createAssignment"
+        to="/addRecipes"
         className={({ isActive }) =>
           isActive
             ? ` text-teal-400 w-fit text-sm font-medium  `
             : `text-sm w-fit  font-medium hover:text-teal-400 duration-300 `
         }
       >
-        <p className="">Create Assignment</p>
+        <p className="">Add-Recipes</p>
       </NavLink>
       {loading ? (
         <NavLink
@@ -209,7 +209,7 @@ export default function Nav() {
         onClick={() => {
           setMenu(false);
         }}
-        to="/assignments"
+        to="/recipes"
         className={({ isActive }) =>
           isActive
             ? ` text-teal-400 w-fit text-sm font-medium  `
@@ -218,13 +218,13 @@ export default function Nav() {
               }  font-medium hover:text-teal-400 duration-300 `
         }
       >
-        <p className="">Assignments</p>
+        <p className="">Recipes</p>
       </NavLink>
       <NavLink
         onClick={() => {
           setMenu(false);
         }}
-        to="/createAssignment"
+        to="/addRecipes"
         className={({ isActive }) =>
           isActive
             ? ` text-teal-400 w-fit text-sm font-medium  `
@@ -233,7 +233,7 @@ export default function Nav() {
               } font-medium hover:text-teal-400 duration-300 `
         }
       >
-        <p className="">Create Assignment</p>
+        <p className="">Add-Recipes</p>
       </NavLink>
 
       {loading ? (

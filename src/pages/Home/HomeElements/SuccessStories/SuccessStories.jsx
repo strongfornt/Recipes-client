@@ -3,8 +3,11 @@ import bg from "./../../../../assets/Success/reviewBanner.jpg";
 import TopReviewSlider from "./TopReviewSlider";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
+import useUser from "../../../../hooks/useUser";
 
 export default function SuccessStories() {
+  const  {user} = useUser()
+  
   const { ref, inView } = useInView({
     triggerOnce: true, // Only trigger once
     threshold: 0.2, // Trigger when 20% of the element is visible
@@ -53,7 +56,7 @@ export default function SuccessStories() {
                   >
                     <p className="text-5xl flex ">
                       {inView && (
-                        <CountUp className="text-white" end={5} duration={5} />
+                        <CountUp className="text-white" end={user?.length} duration={5} />
                       )}
                       <span className="text-teal-400">+</span>{" "}
                     </p>
