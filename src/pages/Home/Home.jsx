@@ -11,7 +11,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 
 export default function Home() {
-    const {theme} = useAuth()
+    const {theme,setDropdown,setMenu} = useAuth()
    
   return (
     
@@ -20,7 +20,12 @@ export default function Home() {
         <title>RecipeFy | Home</title>
       </Helmet>
 {/* banner section */}
-      <div>
+      <div 
+        onClick={()=>{
+          setMenu(false)
+          setDropdown(false)
+        }}
+      >
       <Banner/>
       </div>
       <div  className="my-16">

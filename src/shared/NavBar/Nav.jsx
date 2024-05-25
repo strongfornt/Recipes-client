@@ -16,6 +16,7 @@ import useAuth from "../../hooks/useAuth";
 
 export default function Nav() {
   const [scrollY, setScrollY] = useState(0);
+  
 
   const {
     user,
@@ -223,6 +224,7 @@ export default function Nav() {
       <NavLink
         onClick={() => {
           setMenu(false);
+          
         }}
         to="/addRecipes"
         className={({ isActive }) =>

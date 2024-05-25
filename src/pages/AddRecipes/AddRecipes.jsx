@@ -187,11 +187,11 @@ export default function AddRecipes() {
                     <option disabled value="default">
               Select a category
             </option>
-            <option value="salad">salad</option>
-            <option value="pizza">pizza</option>
+            <option value="salad">Salad</option>
+            <option value="pizza">Pizza</option>
             <option value="beef">Beef</option>
             <option value="dessert">Dessert</option>
-            <option value="soup">soup</option>
+            <option value="soup">Soup</option>
         
                 </select>
               </div>
@@ -208,6 +208,7 @@ export default function AddRecipes() {
                   placeholder="country"
                   className="w-full px-3 py-2 border outline-none rounded-md bg-transparent border-gray-300 focus:ring-1 focus:ring-teal-400"
                 />
+                
               </div>
               <div className="col-span-full sm:col-span-3">
                 <label htmlFor="link" className="block text-sm">

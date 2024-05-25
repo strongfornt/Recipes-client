@@ -4,9 +4,12 @@ import TopReviewSlider from "./TopReviewSlider";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
 import useUser from "../../../../hooks/useUser";
+import useRecipes from "../../../../hooks/useRecipes";
 
 export default function SuccessStories() {
-  const  {user} = useUser()
+  const  {user} = useUser();
+  const {recipes}= useRecipes()
+  // console.log((recipes?.length));
   
   const { ref, inView } = useInView({
     triggerOnce: true, // Only trigger once
@@ -39,8 +42,8 @@ export default function SuccessStories() {
                       {inView && (
                         <CountUp
                           className="text-white"
-                          start={5}
-                          end={10}
+                          start={2}
+                          end={recipes?.length}
                           duration={5}
                         />
                       )}

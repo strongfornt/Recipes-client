@@ -22,7 +22,5 @@ export default function PrivateRoutes({children}) {
 
      toast.error('Access denied. Please log in first.')
     return <Navigate to='/' state={location.pathname} replace={true} />
-//    if(!user){
-//    
-//    }
+
 }
