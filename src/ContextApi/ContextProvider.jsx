@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import {
-    GithubAuthProvider,
+   
     GoogleAuthProvider,
-    createUserWithEmailAndPassword,
+    
     onAuthStateChanged,
-    signInWithEmailAndPassword,
+    
     signInWithPopup,
     signOut,
     updateProfile,
@@ -13,12 +13,14 @@ import {
 
 import axios from "axios";
 import auth from "../Firebase/firebase.config";
+
   
   
   
   export const AuthContext = createContext(null);
   
   export default function ContextProvider({ children }) {
+   
   
     const googleProvider = new GoogleAuthProvider();
   
@@ -54,18 +56,18 @@ import auth from "../Firebase/firebase.config";
           setUser(currentUser);
           setLoading(false)
           //if user exist then issue a token ===============================
-          axios.post('https://online-study-server-ten.vercel.app/jwt',loggedUser,{withCredentials: true})
-          .then(() =>{
+          // axios.post('https://online-study-server-ten.vercel.app/jwt',loggedUser,{withCredentials: true})
+          // .then(() =>{
             
-          })
-          
+          // })
+        
         } else {
           setUser(null);
           setLoading(false)
-          axios.post('https://online-study-server-ten.vercel.app/logout',loggedUser,{withCredentials:true})
-          .then(() => {
+          // axios.post('https://online-study-server-ten.vercel.app/logout',loggedUser,{withCredentials:true})
+          // .then(() => {
            
-          })
+          // })
         }
       });
   

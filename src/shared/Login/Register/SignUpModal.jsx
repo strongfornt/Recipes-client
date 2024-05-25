@@ -1,22 +1,22 @@
-import { FcGoogle } from "react-icons/fc";
+
 import useAuth from "../../../hooks/useAuth";
-import { Link } from "react-router-dom";
-import toast from "react-hot-toast";
+
 import { IoMdClose } from "react-icons/io";
+import SocialLogin from "../SocialLogin";
 
 export default function SignUpModal() {
-  const {  setSignInModal, setSignUpModal, googleLogin } =
+  const {  setSignInModal, setSignUpModal} =
     useAuth();
-  const handleGoogleLogin = () => {
-    googleLogin()
-      .then(() => {
-        toast.success("Account created! Welcome!");
-      })
-      .catch((err) => {
-        console.log(err);
-        toast.error("Registration error. Check connection.");
-      });
-  };
+  // const handleGoogleLogin = () => {
+  //   googleLogin()
+  //     .then(() => {
+  //       toast.success("Account created! Welcome!");
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //       toast.error("Registration error. Check connection.");
+  //     });
+  // };
   
   return (
     <>
@@ -71,7 +71,7 @@ export default function SignUpModal() {
                   </p>
 
                   <div className="my-6 space-y-4">
-                    <button
+                    {/* <button
                       onClick={() => {
                         handleGoogleLogin();
                         setSignUpModal(false);
@@ -86,7 +86,8 @@ export default function SignUpModal() {
                     >
                       <FcGoogle className="text-2xl" />
                       <p className="text-white/70" >Register with Google</p>
-                    </button>
+                    </button> */}
+                    <SocialLogin title='Register' />
                   </div>
                 </div>
               </div>

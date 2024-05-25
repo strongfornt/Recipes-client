@@ -1,21 +1,22 @@
-import { FcGoogle } from "react-icons/fc";
+
 import useAuth from "../../hooks/useAuth";
-import toast from "react-hot-toast";
-import OutsideClickHandler from "react-outside-click-handler";
+
+
 import { IoMdClose } from "react-icons/io";
+import SocialLogin from "./SocialLogin";
 
 
 export default function SignInModal() {
-    const {theme,setSignInModal,setSignUpModal,googleLogin} = useAuth()
-    const handleGoogleLogin = () => {
-        googleLogin()
-          .then(() => {
-            toast.success("You're in! Welcome back!");
-          })
-          .catch(() => {
-            toast.error("Sign-in error. Check connection.");
-          });
-      };
+    const {setSignInModal,setSignUpModal} = useAuth()
+    // const handleGoogleLogin = () => {
+    //     googleLogin()
+    //       .then(() => {
+    //         toast.success("You're in! Welcome back!");
+    //       })
+    //       .catch(() => {
+    //         toast.error("Sign-in error. Check connection.");
+    //       });
+    //   };
     
   return (
     <>
@@ -69,7 +70,7 @@ export default function SignInModal() {
         </p>
 
         <div className="my-6 space-y-4">
-          <button
+          {/* <button
           
             onClick={()=>{
                 handleGoogleLogin()
@@ -85,7 +86,8 @@ export default function SignInModal() {
           >
             <FcGoogle className="text-2xl" />
             <p className="text-white/70" >Login with Google</p>
-          </button>
+          </button> */}
+          <SocialLogin title='Login'/>
         </div>
       </div>
               </div>
