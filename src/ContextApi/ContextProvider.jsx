@@ -13,6 +13,7 @@ import {
 
 
 import auth from "../Firebase/firebase.config";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
   
   
@@ -20,7 +21,7 @@ import auth from "../Firebase/firebase.config";
   export const AuthContext = createContext(null);
   
   export default function ContextProvider({ children }) {
-   
+   const axiosPublic = useAxiosPublic()
   
     const googleProvider = new GoogleAuthProvider();
   
@@ -57,18 +58,17 @@ import auth from "../Firebase/firebase.config";
           setUser(currentUser);
           setLoading(false)
           //if user exist then issue a token ===============================
-          // axios.post('https://online-study-server-ten.vercel.app/jwt',loggedUser,{withCredentials: true})
-          // .then(() =>{
-            
-          // })
+          axiosPublic.post("/jwt", loggedUser).then((res) => {
+            if (res.data.token) {
+              localStorage.setItem("access-token", res.data.token);
+            }
+          });
         
         } else {
+          localStorage.removeItem("access-token");
           setUser(null);
           setLoading(false)
-          // axios.post('https://online-study-server-ten.vercel.app/logout',loggedUser,{withCredentials:true})
-          // .then(() => {
-           
-          // })
+         
         }
       });
   

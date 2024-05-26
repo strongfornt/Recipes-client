@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 import { MdKeyboardArrowRight } from "react-icons/md";
@@ -7,12 +7,27 @@ import { FaRegEye } from "react-icons/fa";
 import RelatedRecipes from "./RelatedRecipes";
 import { useEffect, useState } from "react";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import Spinner from "../../shared/Spineer/Spinner";
 
 export default function RecipesDetails() {
   const { theme } = useAuth();
-  const axiosPublic = useAxiosPublic()
+  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
+  const [recipe,setRecipe] = useState({})
+  const [loading,setLoading] = useState(true)
   const [relatedRecipes,setRelatedRecipes] = useState([])
-  const recipe = useLoaderData();
+
+  const {id} = useParams()
+  
+  useEffect(()=>{
+        axiosSecure.get(`/recipe/${id}`)
+        .then(res =>{
+            setRecipe(res.data)
+            setLoading(false)
+        })
+
+  },[axiosSecure,id])
   
   const { name, category, country, link, details,watch ,purchasedBy} = recipe || {};
 
@@ -23,8 +38,8 @@ export default function RecipesDetails() {
         })
     },[axiosPublic,category])
 
-   
-
+    if(loading) return <Spinner/>
+    
   return (
     <>
       <Helmet>

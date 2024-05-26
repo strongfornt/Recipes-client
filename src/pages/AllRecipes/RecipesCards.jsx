@@ -57,8 +57,18 @@ export default function RecipesCards({ data: recipe }) {
         })
         //recipes modified related api end    ========================
       } else {
-        toast.error("Low on coins! Purchase to continue.");
+        const recipeInfo = {
+            buyerMail: user?.email,
+            id,
+          };
+        axiosPublic.put("/recipe", recipeInfo).then((res) => {
+            if(res.data.message === 'alreadyExist'){
+              return navigate(`/recipeDetails/${id}`);
+            }
+            toast.error("Low on coins! Purchase to continue.");
         return navigate("/coins");
+        })
+        
       }
     }
   };

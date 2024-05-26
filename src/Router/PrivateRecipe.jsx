@@ -5,7 +5,7 @@ import Spinner from "../shared/Spineer/Spinner";
 
 export default function PrivateRoutes({children}) {
     const {user,loading} = useAuth()
-    const location = useLocation()
+    
 
 
     if(loading){
@@ -15,8 +15,8 @@ export default function PrivateRoutes({children}) {
     if(user){
         return children;
     }
-
+    
      
-    return <Navigate to='/' state={location.pathname} replace={true} />
+    return <Navigate to='/recipes' state={location.pathname} replace={true} />
 
 }

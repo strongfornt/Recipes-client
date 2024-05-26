@@ -10,7 +10,7 @@ import Error from "../shared/Error/Error";
 import RecipesDetails from "../pages/AllRecipes/RecipesDetails";
 import PrivateRecipe from "../Router/PrivateRecipe"
 import BuyCoins from "../pages/Pricing/BuyCoins";
-
+  
  export const router = createBrowserRouter([
     {
       path: "/",
