@@ -21,12 +21,12 @@ export default function SocialLogin({title}) {
             image:res.user?.photoURL,
             coin:50
           }
-          console.log(userInfo);
+         
           //save user into database ============================================== 
           const savedUser = async() => {
             try{
-              const res = await axiosPublic.post('/users',userInfo)
-              console.log(res.data);
+               await axiosPublic.post('/users',userInfo)
+              
             }
            catch(err){
             console.log(err)

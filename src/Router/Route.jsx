@@ -8,6 +8,7 @@ import AddRecipes from "../pages/AddRecipes/AddRecipes";
 import Recipes from "../pages/AllRecipes/Recipes";
 import Error from "../shared/Error/Error";
 import RecipesDetails from "../pages/AllRecipes/RecipesDetails";
+import PrivateRecipe from "../Router/PrivateRecipe"
 
  export const router = createBrowserRouter([
     {
@@ -29,7 +30,7 @@ import RecipesDetails from "../pages/AllRecipes/RecipesDetails";
         },
         {
             path:'/recipeDetails/:id',
-            element:<RecipesDetails/>,
+            element:<PrivateRecipe><RecipesDetails/></PrivateRecipe>,
             loader:({params}) => fetch(`http://localhost:5000/recipe/${params.id}`)
         }
       ]

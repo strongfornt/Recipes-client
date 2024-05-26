@@ -3,12 +3,17 @@ import { BiLogoInstagramAlt } from "react-icons/bi";
 import { IoMdCall, IoMdMail } from "react-icons/io";
 
 import useAuth from "../../hooks/useAuth";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { calculateScrollbarWidth } from "./ScrollBar";
 import SignInModal from "../Login/SignInModal";
 import SignUpModal from "../Login/Register/SignUpModal";
+import { TbCoins } from "react-icons/tb";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 export default function TopHeader() {
+  const [singleUser, setSingleUser] = useState({});
+ 
+  const axiosPublic = useAxiosPublic();
   const {
     user,
     loading,
@@ -19,6 +24,8 @@ export default function TopHeader() {
     signInModal,
     signUpModal,
     setSignUpModal,
+    userRefetch
+    
   } = useAuth();
 
   useEffect(() => {
@@ -43,6 +50,15 @@ export default function TopHeader() {
     }
   };
 
+
+  useEffect(() => {
+    axiosPublic.get(`/users/${user?.email}`).then((res) => {
+      setSingleUser(res.data);
+      
+    });
+  }, [axiosPublic, user?.email,userRefetch]);
+  
+  
   return (
     <>
       <div className=" bg-red-800 ">
@@ -79,6 +95,19 @@ export default function TopHeader() {
               <IoMdCall className="text-teal-500 text-base" />
               <p className="font-semibold">13-543-135</p>
             </div>
+            {loading ? (
+              <div className="text-[#fdfcfc] flex  items-center gap-2 text-[12px] font-bold">
+                <TbCoins className="cursor-pointer text-teal-500 text-base" />
+                <p className="font-semibold">..</p>
+              </div>
+            ) : (
+              user && (
+                <div className="text-[#fdfcfc] flex  items-center gap-2 text-[12px] font-bold">
+                  <TbCoins className="cursor-pointer text-teal-500 text-base" />
+                  <p className="font-semibold">{singleUser?.coin}</p>
+                </div>
+              )
+            )}
           </div>
 
           {/* login and register button */}

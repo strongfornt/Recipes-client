@@ -1,13 +1,58 @@
 import {  useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
+import useRegistredUser from "../../hooks/useRegistredUser";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+
 
 // eslint-disable-next-line react/prop-types
 export default function RecipesCards({ data: recipe }) {
-  const { theme } = useAuth();
+  const { theme,user,setUserRefetch,userRefetch } = useAuth();
+  const axiosPublic = useAxiosPublic();
   const navigate = useNavigate()
-
+  const {singleUser,refetch} = useRegistredUser()
+ 
   const { name, country, creator, purchasedBy,image,_id } = recipe || {};
     
+    //handle the conditional navigate ========================
+    const handleNavigate = (id) =>{
+        
+        if(!user){
+            return toast.error('Access denied. Please log in first!')
+        }
+        if(user ){
+            if( user?.email === creator?.email) {
+                 return navigate(`/recipeDetails/${id}`)
+            }
+            if(singleUser?.coin > 10) {
+                const userInfo = {
+                    buyerMail : user?.email,
+                    creatorMail:creator?.email
+                }
+                //user coin update related api call====================================
+                axiosPublic.put('/users',userInfo)
+                .then(res => {
+                    if(res.data.resultBuyer.modifiedCount && res.data.resultCreator.modifiedCount){
+                        refetch()
+                        setUserRefetch(!userRefetch)
+                    }
+                })
+
+                //recipes modified related api========================
+                
+
+                toast('10 coins deducted. Enjoy your recipe!')
+                return  navigate(`/recipeDetails/${id}`)
+             
+            }else{
+                toast.error('Low on coins! Purchase to continue.')
+                return navigate('/')
+            }
+          
+        }
+        
+    }
+
   return (
     <>
       <section
@@ -108,7 +153,7 @@ export default function RecipesCards({ data: recipe }) {
             
               </div>
 
-                <button onClick={()=>navigate(`/recipeDetails/${_id}`)}  className="w-full px-5 py-2 mt-6 text-sm tracking-wider font-bold text-white uppercase transition-colors duration-300 transform bg-teal-600 rounded-lg lg:w-auto hover:bg-teal-500 focus:outline-none focus:bg-teal-500">
+                <button onClick={()=>handleNavigate(_id)}  className="w-full px-5 py-2 mt-6 text-sm tracking-wider font-bold text-white uppercase transition-colors duration-300 transform bg-teal-600 rounded-lg lg:w-auto hover:bg-teal-500 focus:outline-none focus:bg-teal-500">
                   View The Recipe
                 </button>
               </div>

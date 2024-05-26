@@ -11,7 +11,7 @@ import {
   } from "firebase/auth";
   import { createContext, useEffect, useState } from "react";
 
-import axios from "axios";
+
 import auth from "../Firebase/firebase.config";
 
   
@@ -31,7 +31,7 @@ import auth from "../Firebase/firebase.config";
     const [dropdown,setDropdown] = useState(false)
     const [signInModal, setSignInModal] = useState(false);
     const [signUpModal, setSignUpModal] = useState(false);
-    
+    const [userRefetch,setUserRefetch] = useState(false)
     
     
  
@@ -94,7 +94,9 @@ import auth from "../Firebase/firebase.config";
       signInModal,
       setSignInModal,
       signUpModal,
-      setSignUpModal
+      setSignUpModal,
+      userRefetch,
+      setUserRefetch
      
     };
     return (
