@@ -98,19 +98,7 @@ export default function TopHeader() {
               <IoMdCall className="text-teal-500 text-base" />
               <p className="font-semibold">13-543-135</p>
             </div>
-            {loading ? (
-              <div className="text-[#fdfcfc] flex  items-center gap-2 text-[12px] font-bold">
-                <TbCoins className="cursor-pointer text-teal-500 text-base" />
-                <p className="font-semibold">..</p>
-              </div>
-            ) : (
-              user && (
-                <div className="text-[#fdfcfc] flex  items-center gap-2 text-[12px] font-bold">
-                  <TbCoins className="cursor-pointer text-teal-500 text-base" />
-                  <p className="font-semibold">{singleUser?.coin}</p>
-                </div>
-              )
-            )}
+        
           </div>
 
           {/* login and register button */}
@@ -153,6 +141,7 @@ export default function TopHeader() {
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
               </svg>
             </label>
+           
 
             {loading ? (
               <div className="text-[#fdfcfc] flex  items-center gap-2 text-[12px] font-bold">
@@ -191,6 +180,19 @@ export default function TopHeader() {
                   </p>
                 </button>
               </>
+            )}
+             {loading ? (
+              <div className="text-[#fdfcfc] flex  items-center gap-1 text-[12px] font-bold">
+                <TbCoins className="cursor-pointer text-teal-500 text-base" />
+                <p className="font-semibold">..</p>
+              </div>
+            ) : (
+              user && (
+                <div className="text-[#fdfcfc] flex   items-center gap-1 text-[12px] font-bold">
+                  <TbCoins className="cursor-pointer text-teal-500 text-base" />
+                  <p className="font-semibold">{singleUser?.coin}</p>
+                </div>
+              )
             )}
           </div>
         </div>
