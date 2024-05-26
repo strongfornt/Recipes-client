@@ -25,11 +25,11 @@ export default function RecipesCards({ data: recipe }) {
                  return navigate(`/recipeDetails/${id}`)
             }
             if(singleUser?.coin > 10) {
+                //user coin update related api call====================================
                 const userInfo = {
                     buyerMail : user?.email,
                     creatorMail:creator?.email
                 }
-                //user coin update related api call====================================
                 axiosPublic.put('/users',userInfo)
                 .then(res => {
                     if(res.data.resultBuyer.modifiedCount && res.data.resultCreator.modifiedCount){
@@ -39,10 +39,21 @@ export default function RecipesCards({ data: recipe }) {
                 })
 
                 //recipes modified related api========================
-                
+                const recipeInfo = {
+                    buyerMail:user?.email,
+                    id
+                }
+                axiosPublic.put('/recipe',recipeInfo)
+                .then( res => {
+                    console.log(res.data);
+                    if(res.data.modifiedCount){
+                        toast('10 coins deducted. Enjoy your recipe!')
+                        return  navigate(`/recipeDetails/${id}`)
+                    }
+                })
 
-                toast('10 coins deducted. Enjoy your recipe!')
-                return  navigate(`/recipeDetails/${id}`)
+
+                
              
             }else{
                 toast.error('Low on coins! Purchase to continue.')

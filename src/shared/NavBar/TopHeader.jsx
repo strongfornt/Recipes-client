@@ -52,10 +52,13 @@ export default function TopHeader() {
 
 
   useEffect(() => {
-    axiosPublic.get(`/users/${user?.email}`).then((res) => {
+   if(user?.email){
+    axiosPublic.get(`/users/${user?.email}`)
+    .then((res) => {
       setSingleUser(res.data);
       
     });
+   }
   }, [axiosPublic, user?.email,userRefetch]);
   
   
