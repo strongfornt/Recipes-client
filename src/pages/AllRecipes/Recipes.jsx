@@ -21,7 +21,7 @@ export default function Recipes() {
   const [recipe,setRecipe] = useState("")
   
   
-  const [refetch, setRefetch] = useState(false);
+//   const [refetch, setRefetch] = useState(false);
   const axiosPublic = useAxiosPublic();
 
   //data fetch hook===============================================
@@ -36,8 +36,7 @@ export default function Recipes() {
     getData();
   }, [ category,axiosPublic,country,recipe]);
 
-console.log(country);
-console.log(recipe);
+
   return (
     <>
       <Helmet>
@@ -80,11 +79,11 @@ console.log(recipe);
           </span>
         </div>
       </div>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto ">
         {/* search functionality start here==================== */}
-      <div className="container    flex items-center justify-center  gap-4 md:gap-8  lg:gap-10  py-5">
+      <div className="container px-2 w-fit mx-auto  flex items-center justify-center  gap-4 md:gap-8  lg:gap-10  py-5">
         {/* search by country start ============================ */}
-      <div className="ml-96 sm:ml-0" >
+      <div className="" >
       <fieldset className="w-full space-y-1 dark:text-gray-800">
 	<label htmlFor="Search" className="hidden">Search</label>
 	<form onSubmit={(e)=>{

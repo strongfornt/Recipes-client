@@ -15,4 +15,4 @@ export const calculateScrollbarWidth = () => {
     document.body.removeChild(tempElement);
 
     return scrollbarWidth;
-};
+}

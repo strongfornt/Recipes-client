@@ -7,6 +7,7 @@ import PrivateRoutes from "./PrivateRoute";
 import AddRecipes from "../pages/AddRecipes/AddRecipes";
 import Recipes from "../pages/AllRecipes/Recipes";
 import Error from "../shared/Error/Error";
+import RecipesDetails from "../pages/AllRecipes/RecipesDetails";
 
  export const router = createBrowserRouter([
     {
@@ -25,6 +26,11 @@ import Error from "../shared/Error/Error";
         {
           path:'/recipes',
           element:<Recipes/>
+        },
+        {
+            path:'/recipeDetails/:id',
+            element:<RecipesDetails/>,
+            loader:({params}) => fetch(`http://localhost:5000/recipe/${params.id}`)
         }
       ]
     },
