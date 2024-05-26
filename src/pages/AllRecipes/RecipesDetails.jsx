@@ -5,12 +5,25 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import useAuth from "../../hooks/useAuth";
 import { FaRegEye } from "react-icons/fa";
 import RelatedRecipes from "./RelatedRecipes";
+import { useEffect, useState } from "react";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 export default function RecipesDetails() {
   const { theme } = useAuth();
+  const axiosPublic = useAxiosPublic()
+  const [relatedRecipes,setRelatedRecipes] = useState([])
   const recipe = useLoaderData();
-  console.log(recipe);
+  
   const { name, category, country, link, details,watch ,purchasedBy} = recipe || {};
+
+    useEffect(()=>{
+        axiosPublic.get(`/recipes/${category}`)
+        .then(res => {
+            setRelatedRecipes(res.data)
+        })
+    },[axiosPublic,category])
+
+   
 
   return (
     <>
@@ -194,10 +207,10 @@ export default function RecipesDetails() {
             <h1 className={`text-xl mb-6 font-semibold ${theme === "light" && 'text-[#4b5664]'}`}>Related <span className="text-teal-400">Recipes</span></h1>
         </div>
         <div className="grid md:grid-cols-3 gap-4  xl:grid-cols-4">
-        <RelatedRecipes/>
-        <RelatedRecipes/>
-        <RelatedRecipes/>
-        <RelatedRecipes/>
+            {
+                relatedRecipes?.map((recipes,idx) =><RelatedRecipes key={idx} recipes={recipes} />)
+            }
+        
         </div>
       </div>
     </>
