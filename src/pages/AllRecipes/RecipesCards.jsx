@@ -58,7 +58,7 @@ export default function RecipesCards({ data: recipe }) {
         //recipes modified related api end    ========================
       } else {
         toast.error("Low on coins! Purchase to continue.");
-        return navigate("/");
+        return navigate("/coins");
       }
     }
   };

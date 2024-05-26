@@ -106,87 +106,35 @@ export default function Nav() {
       >
         <p className="">Add-Recipes</p>
       </NavLink>
+  
       {loading ? (
         <NavLink
           onClick={() => setMenu(false)}
-          to="/mySubmitted"
+          to="/coins"
           className={({ isActive }) =>
             isActive
               ? ` text-teal-400 w-fit text-sm font-medium  `
               : `text-sm w-fit  font-medium hover:text-teal-400 duration-300 `
           }
         >
-          <p className="">My Submitted</p>
+          <p className="">Purchase-Coins</p>
         </NavLink>
       ) : (
         user && (
           <NavLink
             onClick={() => setMenu(false)}
-            to="/mySubmitted"
+            to="/coins"
             className={({ isActive }) =>
               isActive
                 ? ` text-teal-400 w-fit text-sm font-medium  `
                 : `text-sm w-fit  font-medium hover:text-teal-400 duration-300 `
             }
           >
-            <p className="">My Submitted</p>
+            <p className="">Purchase-Coins</p>
           </NavLink>
         )
       )}
-      {loading ? (
-        <NavLink
-          onClick={() => setMenu(false)}
-          to="/pendingAssignment"
-          className={({ isActive }) =>
-            isActive
-              ? ` text-teal-400 w-fit text-sm font-medium  `
-              : `text-sm w-fit  font-medium hover:text-teal-400 duration-300 `
-          }
-        >
-          <p className="">Pending Assignment</p>
-        </NavLink>
-      ) : (
-        user && (
-          <NavLink
-            onClick={() => setMenu(false)}
-            to="/pendingAssignment"
-            className={({ isActive }) =>
-              isActive
-                ? ` text-teal-400 w-fit text-sm font-medium  `
-                : `text-sm w-fit  font-medium hover:text-teal-400 duration-300 `
-            }
-          >
-            <p className="">Pending Assignment</p>
-          </NavLink>
-        )
-      )}
-      {loading ? (
-        <NavLink
-          onClick={() => setMenu(false)}
-          to="/updateProfile"
-          className={({ isActive }) =>
-            isActive
-              ? ` text-teal-400 w-fit text-sm font-medium  `
-              : `text-sm w-fit  font-medium hover:text-teal-400 duration-300 `
-          }
-        >
-          <p className="">Update Profile</p>
-        </NavLink>
-      ) : (
-        user && (
-          <NavLink
-            onClick={() => setMenu(false)}
-            to="/updateProfile"
-            className={({ isActive }) =>
-              isActive
-                ? ` text-teal-400 w-fit text-sm font-medium  `
-                : `text-sm w-fit  font-medium hover:text-teal-400 duration-300 `
-            }
-          >
-            <p className="">Update Profile</p>
-          </NavLink>
-        )
-      )}
+   
     </>
   );
 
@@ -238,7 +186,7 @@ export default function Nav() {
         <p className="">Add-Recipes</p>
       </NavLink>
 
-      {loading ? (
+      {/* {loading ? (
         <NavLink
           onClick={() => {
             setMenu(false);
@@ -272,7 +220,7 @@ export default function Nav() {
             <p className="">Pending Assignment</p>
           </NavLink>
         )
-      )}
+      )} */}
     </>
   );
 

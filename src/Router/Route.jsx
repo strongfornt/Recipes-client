@@ -9,6 +9,7 @@ import Recipes from "../pages/AllRecipes/Recipes";
 import Error from "../shared/Error/Error";
 import RecipesDetails from "../pages/AllRecipes/RecipesDetails";
 import PrivateRecipe from "../Router/PrivateRecipe"
+import BuyCoins from "../pages/Pricing/BuyCoins";
 
  export const router = createBrowserRouter([
     {
@@ -32,6 +33,10 @@ import PrivateRecipe from "../Router/PrivateRecipe"
             path:'/recipeDetails/:id',
             element:<PrivateRecipe><RecipesDetails/></PrivateRecipe>,
             loader:({params}) => fetch(`http://localhost:5000/recipe/${params.id}`)
+        },
+        {
+          path:'/coins',
+          element:<BuyCoins/>
         }
       ]
     },
